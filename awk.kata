@@ -1,0 +1,35 @@
+awk does not work well in powershell
+use cmd instead
+---
+awk -F';' '{print $1, "was born", $3 "."}' people.txt
+
+awk -F'[;,-]' '{print "first name", $2, "born in year", $4, "dead in year", $7}' people.txt
+	- applies all delimiters
+    - from left to right, suppose you a name with - (Clark-Williams, John), it will mess my command above
+     $1 is Clark, $2 is Williams, $3 is John, etc.
+  
+awk -F'[;,-]' '{printf "%s %s (%s) was born in %d.\n", $2, $1, $3, $4}' people.txt
+	-like format string from c# 
+
+awk -F'[;,-]' '{printf "|%15s|%6d|\n", $1, $4}' people.txt
+awk -F'[;,-]' '{printf "|%-15s|%-6d|\n", $1, $4}' people.txt
+	- to left justify
+awk -F'[;,-]' '{printf "|%-15s|%06d|\n", $1, $4}' people.txt
+	0 for leading zeros if right justified
+	number after % tells length
+awk -F'[;,-]' '{printf "|%-15s|%f|\n", $1, $4/2}' people.txt
+	simple math
+awk -F'[;,-]' '{printf "|%-15s|%.2f|\n", $1, $4/2}' people.txt
+	simple math, controls decimal places	
+	
+awk -f people1.awk people.txt	
+
+awk -f .\contrib1.awk .\contrib.txt
+	Print the names of those who contributed between $75 and $200 in the first month.
+	
+awk -F':' '{if ((($3+$4+$5)/3) > 200) {print $1, $2} }' .\contrib.txt
+	Print the names and phone numbers of those with an average monthly contribution greater than $200
+	
+awk -f student.awk student.txt
+	Notice each record is separated by two newlines (use RS parameter) and each field is in a newline (use FS parameter)
+	https://www.thegeekstuff.com/2010/01/8-powerful-awk-built-in-variables-fs-ofs-rs-ors-nr-nf-filename-fnr/

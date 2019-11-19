@@ -1,0 +1,6 @@
+Adams, Ansel;photographer;1902-02-20;1984-04-22
+Asimov, Isaac;author;1920-01-02;1992-04-06
+Janney, Allison;actress;1959-11-19
+La Rue, Lash;actor;1917-06-15;1996-05-21
+Sagan, Carl;astronomer/writer;1934-11-09;1996-12-20
+Sharif, Omar;bridge expert/actor;1932-04-10
